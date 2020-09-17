@@ -1,0 +1,26 @@
+<mat-card *ngIf="productForm">
+    <mat-card-title>
+        Editar Produto
+    </mat-card-title>
+    <form [formGroup]="productForm" *ngIf="productForm">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Nome" 
+            [(ngModel)]="productForm.value.name"  formControlName="name"
+            name="name">
+            <mat-error  >Nome obrigatório</mat-error> 
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Preço"
+            [(ngModel)]="productForm.value.price" formControlName="price" 
+            name="price">
+            <mat-error>Preço obrigatório</mat-error> 
+            <mat-error>Preço Invalido</mat-error> 
+        </mat-form-field>
+    </form>
+    <button [disabled]="!productForm.valid" mat-raised-button (click)="updateProduct()" color="primary" >
+        Salvar
+    </button>
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</mat-card>
